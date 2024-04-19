@@ -13,4 +13,11 @@ pnpm dev
 # or
 bun dev
 ```
+access to the administration panel
 
+password= -n5c7ETR-2Q@g*A
+email = kanphatratrazer28@gmail.com
+
+base url
+
+NEXT_PUBLIC_BACKEND_BASE_URL= http://127.0.0.1:1337
