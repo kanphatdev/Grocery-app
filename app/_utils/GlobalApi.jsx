@@ -11,7 +11,7 @@ const getSlider = () => axiosClient.get('/sliders?populate=image').then(resp=>{
 const getCategoryList = () =>  axiosClient.get('/categories?populate=icon').then(resp=>{
     return resp.data.data
 })
-const getAllProducts = () => axiosClient.get('/products?populate=images').then(resp => {
+const getAllProducts = () => axiosClient.get('/products?populate=*').then(resp => {
     return resp.data.data
 })
 export default {

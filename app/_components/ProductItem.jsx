@@ -1,6 +1,15 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import ProductItemDetail from "./ProductItemDetail";
 
 function ProductItem({ product }) {
   return (
@@ -15,21 +24,35 @@ function ProductItem({ product }) {
         alt="icon"
         className="h-[200px] w-[200px] object-contain"
       />
-      
+
       <h2 className="font-bold text-lg">{product.attributes.name}</h2>
       <div className="flex gap-3">
-
-      {product.attributes.sellingPrice && (
-        <h2 className="font-bold">${product.attributes.sellingPrice}</h2>
-      )}
-      <h2 className={`font-bold text-gray-500 line-through`}>${product.attributes.mrp}</h2>
+        {product.attributes.sellingPrice && (
+          <h2 className="font-bold">${product.attributes.sellingPrice}</h2>
+        )}
+        <h2 className={`font-bold text-gray-500 line-through`}>
+          ${product.attributes.mrp}
+        </h2>
       </div>
-      <Button
-        variant={"outline"}
-        className="text-primary hover:text-white hover:bg-primary capitalize"
-      >
-        add to cart
-      </Button>
+
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            variant={"outline"}
+            className="text-primary hover:text-white hover:bg-primary capitalize"
+          >
+            add to cart
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+        
+            <DialogDescription>
+              <ProductItemDetail product={product}/>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
