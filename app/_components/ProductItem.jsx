@@ -12,6 +12,11 @@ import {
 import ProductItemDetail from "./ProductItemDetail";
 
 function ProductItem({ product }) {
+  // Check if product or its attributes are null or undefined
+  if (!product || !product.attributes || !product.attributes.images || !product.attributes.images.data) {
+    return null; // Or render a placeholder or error message
+  }
+
   return (
     <div className="p-2 md:p-6 flex flex-col items-center justify-center gap-3 border rounded-lg hover:shadow-lg hover:scale-105 transition-all ease-in-out cursor-pointer">
       <Image
@@ -46,7 +51,6 @@ function ProductItem({ product }) {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-        
             <DialogDescription>
               <ProductItemDetail product={product}/>
             </DialogDescription>
